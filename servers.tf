@@ -19,6 +19,7 @@ module "ec2_cluster" {
   }
 }
 
+# sg for public web servers
 resource "aws_security_group" "public-web_server" {
   name        = "${var.project_name}-public-web_server-sg"
   description = "Security group for public web servers"
