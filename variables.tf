@@ -25,3 +25,13 @@ variable "web_server_key_name" {
   description = "IAM key to install on web servers"
   type        = string
 }
+
+variable "db_user" {
+  description = "RDS db user"
+  type        = string
+}
+
+variable "db_pass" {
+  description = "RDS db user password"
+  type        = string
+}
