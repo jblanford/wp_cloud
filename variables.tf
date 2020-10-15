@@ -26,6 +26,16 @@ variable "web_server_key_name" {
   type        = string
 }
 
+variable "db_main_id" {
+  description = "RDS main db identifier"
+  type        = string
+}
+
+variable "db_replica_id" {
+  description = "RDS replica db identifier"
+  type        = string
+}
+
 variable "db_user" {
   description = "RDS db user"
   type        = string

@@ -4,3 +4,8 @@ environment  = "dev"
 web_server_ami           = "ami-03657b56516ab7912"
 web_server_instance_type = "t3.micro"
 web_server_key_name      = "jb-ohio"
+
+db_user = "admin"
+db_pass = "<put_pass_here>"
+db_main_id = "wpc-dev-main"
+db_replica_id = "wpc-dev-replica"
