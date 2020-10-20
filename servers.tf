@@ -11,7 +11,7 @@ module "ec2_cluster" {
   iam_instance_profile   = aws_iam_instance_profile.ssm_profile.name
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.public-web_server.id]
-  subnet_ids             = module.vpc.public_subnets
+  subnet_ids             = module.vpc.private_subnets
 
   tags = {
     Project       = "${var.project_name}"
