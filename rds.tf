@@ -3,6 +3,8 @@ module "main" {
   source  = "terraform-aws-modules/rds/aws"
   version = "2.18.0"
 
+  count               = var.rds_main_enabled ? 1 : 0
+
   identifier = "${var.db_main_id}"
 
   engine            = "mariadb"
@@ -43,10 +45,12 @@ module "replica" {
   source  = "terraform-aws-modules/rds/aws"
   version = "2.18.0"
 
+  count = var.rds_replica_enabled ? 1 : 0
+
   identifier = "${var.db_replica_id}"
 
   # Source database.
-  replicate_source_db = module.main.this_db_instance_id
+  #replicate_source_db = module.main.this_db_instance_id
 
   engine            = "mariadb"
   engine_version    = "10.3"

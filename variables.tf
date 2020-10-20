@@ -45,3 +45,15 @@ variable "db_pass" {
   description = "RDS db user password"
   type        = string
 }
+
+variable "rds_main_enabled" {
+  description = "Create main database"
+  type        = bool
+  default     = false
+}
+
+variable "rds_replica_enabled" {
+  description = "Create replica database"
+  type        = bool
+  default     = false
+}
