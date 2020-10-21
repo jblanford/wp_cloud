@@ -1,4 +1,3 @@
-
 ## Project VPC
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
@@ -15,8 +14,9 @@ module "vpc" {
 
   enable_ipv6 = false
 
-  enable_nat_gateway = false
-  single_nat_gateway = false
+  enable_nat_gateway = true
+  single_nat_gateway = true
+  one_nat_gateway_per_az = false
 
   # Needed for EFS
   enable_dns_hostnames = true
