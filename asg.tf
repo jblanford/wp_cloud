@@ -22,6 +22,9 @@ resource "aws_autoscaling_group" "web_asg" {
   max_size             = 9
   health_check_type    = "ELB"
 
+  # Attach these servers to the web-80-tg target group on the web-alb
+  target_group_arns = [aws_lb_target_group.web-80-tg.arn]
+
   tag {
     key                 = "Name"
     value               = "${var.project_name}-${var.environment}-web"
