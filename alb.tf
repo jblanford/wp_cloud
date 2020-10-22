@@ -50,6 +50,7 @@ resource "aws_security_group" "alb" {
   }
 }
 
+# Target group for port 80
 resource "aws_lb_target_group" "web-80-tg" {
 
   name = "${var.project_name}-${var.environment}-web-80-tg"
@@ -76,6 +77,7 @@ resource "aws_lb_target_group" "web-80-tg" {
   }
 }
 
+# Have the alb listen on port 80 and forward to web-80-tg servers
 resource "aws_lb_listener" "web-80" {
   load_balancer_arn = aws_lb.web-alb.arn
   port              = 80
