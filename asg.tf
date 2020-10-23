@@ -9,7 +9,7 @@ data "template_file" "user_data" {
 
 resource "aws_launch_configuration" "web_lc" {
   name_prefix     = "${var.project_name}-${var.environment}-lc-"
-  image_id        = var.web_server_ami
+  image_id        = data.aws_ami.amazon-linux-2.id
   instance_type   = var.web_server_instance_type
   user_data       = data.template_file.user_data.rendered
 
