@@ -57,3 +57,8 @@ variable "rds_replica_enabled" {
   type        = bool
   default     = false
 }
+
+variable "dns_zone" {
+  description = "Route53 hosted dns zone for project"
+  type        = string
+}
