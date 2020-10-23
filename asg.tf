@@ -1,7 +1,17 @@
+data "template_file" "user_data" {
+  template = file("${path.module}/user_data.sh")
+
+  vars = {
+    project_name              = var.project_name
+    environment               = var.environment
+  }
+}
+
 resource "aws_launch_configuration" "web_lc" {
   name_prefix     = "${var.project_name}-${var.environment}-lc-"
   image_id        = var.web_server_ami
   instance_type   = var.web_server_instance_type
+  user_data       = data.template_file.user_data.rendered
 
   security_groups             = [aws_security_group.public-web_server.id]
   iam_instance_profile        = aws_iam_instance_profile.ssm_profile.name
