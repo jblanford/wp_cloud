@@ -1,11 +1,17 @@
-project_name = "wp_cloud"
+project_name = "wp-cloud"
 environment  = "dev"
 
 web_server_ami           = "ami-03657b56516ab7912"
 web_server_instance_type = "t3.micro"
 web_server_key_name      = "jb-ohio"
 
-db_user = "admin"
-db_pass = "<put_pass_here>"
-db_main_id = "wpc-dev-main"
+db_user       = "admin"
+db_pass       = "<put pass here>"
+db_main_id    = "wpc-dev-main"
 db_replica_id = "wpc-dev-replica"
+
+rds_main_enabled    = false
+rds_replica_enabled = false
+
+# route53 hosted domain name
+dns_zone = "example.com"
