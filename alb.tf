@@ -5,7 +5,7 @@ resource "aws_lb" "web-alb" {
   security_groups    = [aws_security_group.alb.id]
   subnets            = module.vpc.public_subnets
 
-  enable_deletion_protection = true
+  enable_deletion_protection = false
 
   tags = {
       Project     = "${var.project_name}"
