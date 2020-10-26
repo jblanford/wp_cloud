@@ -14,8 +14,8 @@ module "vpc" {
 
   enable_ipv6 = false
 
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  enable_nat_gateway     = true
+  single_nat_gateway     = true
   one_nat_gateway_per_az = false
 
   # Needed for EFS
@@ -25,9 +25,9 @@ module "vpc" {
 
   # Global tags for all resources
   tags = {
-    Project       = "${var.project_name}"
-    Environment   = "${var.environment}"
-    Terraform     = "true"
+    Project     = "${var.project_name}"
+    Environment = "${var.environment}"
+    Terraform   = "true"
   }
 
   # Tags for public subnet

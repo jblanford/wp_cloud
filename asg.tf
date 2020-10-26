@@ -2,16 +2,16 @@ data "template_file" "user_data" {
   template = file("${path.module}/user_data.sh")
 
   vars = {
-    project_name              = var.project_name
-    environment               = var.environment
+    project_name = var.project_name
+    environment  = var.environment
   }
 }
 
 resource "aws_launch_configuration" "web_lc" {
-  name_prefix     = "${var.project_name}-${var.environment}-lc-"
-  image_id        = data.aws_ami.amazon-linux-2.id
-  instance_type   = var.web_server_instance_type
-  user_data       = data.template_file.user_data.rendered
+  name_prefix   = "${var.project_name}-${var.environment}-lc-"
+  image_id      = data.aws_ami.amazon-linux-2.id
+  instance_type = var.web_server_instance_type
+  user_data     = data.template_file.user_data.rendered
 
   security_groups             = [aws_security_group.web_server.id]
   iam_instance_profile        = aws_iam_instance_profile.ssm_profile.name
@@ -27,10 +27,10 @@ resource "aws_autoscaling_group" "web_asg" {
   launch_configuration = aws_launch_configuration.web_lc.name
   vpc_zone_identifier  = module.vpc.private_subnets
 
-  desired_capacity     = 3
-  min_size             = 1
-  max_size             = 9
-  health_check_type    = "ELB"
+  desired_capacity  = 3
+  min_size          = 1
+  max_size          = 9
+  health_check_type = "ELB"
 
   # Attach these servers to the web-80-tg target group on the web-alb
   target_group_arns = [aws_lb_target_group.web-80-tg.arn]

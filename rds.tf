@@ -3,7 +3,7 @@ module "main" {
   source  = "terraform-aws-modules/rds/aws"
   version = "2.18.0"
 
-  count               = var.rds_main_enabled ? 1 : 0
+  count = var.rds_main_enabled ? 1 : 0
 
   identifier = "${var.db_main_id}"
 
@@ -34,7 +34,7 @@ module "main" {
   major_engine_version = "10.3"
 
   tags = {
-    Project       = "${var.project_name}"
+    Project     = "${var.project_name}"
     Terraform   = "true"
     Environment = "${var.environment}"
   }
@@ -57,7 +57,7 @@ module "replica" {
   instance_class    = "db.t3.micro"
   allocated_storage = 20
 
-  name     = "${var.project_name}_${var.environment}_replica"
+  name = "${var.project_name}_${var.environment}_replica"
 
   # Username and password should not be set for replicas
   username = ""
@@ -87,7 +87,7 @@ module "replica" {
   create_db_parameter_group = false
 
   tags = {
-    Project       = "${var.project_name}"
+    Project     = "${var.project_name}"
     Terraform   = "true"
     Environment = "${var.environment}"
   }
@@ -98,10 +98,10 @@ module "replica" {
 resource "aws_security_group" "rds_servers" {
   name        = "${var.project_name}-rds_servers-sg"
   description = "Security group for rds servers"
-  vpc_id      =  module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
 
   tags = {
-    Name = "${var.project_name}-rds-sg",
+    Name        = "${var.project_name}-rds-sg",
     Terraform   = "true"
     Project     = "${var.project_name}"
     Environment = "${var.environment}"
@@ -114,7 +114,7 @@ resource "aws_security_group_rule" "rds_servers-mysql-in" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  source_security_group_id = aws_security_group.web_server.id #allow from this sg
+  source_security_group_id = aws_security_group.web_server.id  #allow from this sg
   security_group_id        = aws_security_group.rds_servers.id # attach to this sg
 }
 
@@ -124,6 +124,6 @@ resource "aws_security_group_rule" "rds_servers-all-out" {
   from_port                = -1
   to_port                  = -1
   protocol                 = "-1"
-  source_security_group_id = aws_security_group.web_server.id #allow out to this sg
+  source_security_group_id = aws_security_group.web_server.id  #allow out to this sg
   security_group_id        = aws_security_group.rds_servers.id # attach to this sg
 }

@@ -8,10 +8,10 @@ resource "aws_lb" "web-alb" {
   enable_deletion_protection = false
 
   tags = {
-      Project     = "${var.project_name}"
-      Terraform   = "true"
-      Environment = "${var.environment}"
-    }
+    Project     = "${var.project_name}"
+    Terraform   = "true"
+    Environment = "${var.environment}"
+  }
 }
 
 output "alb_dns_name" {
@@ -22,8 +22,8 @@ output "alb_dns_name" {
 # For alb allow port 80 in from anywhere and out to anywhere
 resource "aws_security_group" "alb" {
 
-  name    = "${var.project_name}-${var.environment}-alb-sg"
-  vpc_id  =  module.vpc.vpc_id
+  name        = "${var.project_name}-${var.environment}-alb-sg"
+  vpc_id      = module.vpc.vpc_id
   description = "Security group for the web alb"
 
   # Allow inbound HTTP requests
@@ -43,7 +43,7 @@ resource "aws_security_group" "alb" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-alb-sg",
+    Name        = "${var.project_name}-${var.environment}-alb-sg",
     Terraform   = "true"
     Project     = "${var.project_name}"
     Environment = "${var.environment}"
@@ -70,7 +70,7 @@ resource "aws_lb_target_group" "web-80-tg" {
   }
 
   tags = {
-    Name = "${var.project_name}-${var.environment}-web-80-tg",
+    Name        = "${var.project_name}-${var.environment}-web-80-tg",
     Terraform   = "true"
     Project     = "${var.project_name}"
     Environment = "${var.environment}"
