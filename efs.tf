@@ -38,22 +38,22 @@ resource "aws_security_group" "efs-exports" {
   }
 }
 
-# Allow nfsv4 in from public-web_server-sg
+# Allow nfsv4 in from web_server-sg
 resource "aws_security_group_rule" "efs-exports-nfsv4-in" {
   type                     = "ingress"
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "tcp"
-  source_security_group_id = aws_security_group.public-web_server.id #allow from this sg
+  source_security_group_id = aws_security_group.web_server.id #allow from this sg
   security_group_id        = aws_security_group.efs-exports.id # attach to this sg
 }
 
-# Allow all out from efs-exports to public-web_server-sg
+# Allow all out from efs-exports to web_server-sg
 resource "aws_security_group_rule" "efs-exports-all-out" {
   type                     = "egress"
   from_port                = -1
   to_port                  = -1
   protocol                 = "-1"
-  source_security_group_id = aws_security_group.public-web_server.id #allow out to this sg
+  source_security_group_id = aws_security_group.web_server.id #allow out to this sg
   security_group_id        = aws_security_group.efs-exports.id # attach to this sg
 }

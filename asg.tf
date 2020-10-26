@@ -13,7 +13,7 @@ resource "aws_launch_configuration" "web_lc" {
   instance_type   = var.web_server_instance_type
   user_data       = data.template_file.user_data.rendered
 
-  security_groups             = [aws_security_group.public-web_server.id]
+  security_groups             = [aws_security_group.web_server.id]
   iam_instance_profile        = aws_iam_instance_profile.ssm_profile.name
   associate_public_ip_address = false
 

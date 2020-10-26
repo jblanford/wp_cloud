@@ -108,22 +108,22 @@ resource "aws_security_group" "rds_servers" {
   }
 }
 
-# Allow mysql in from public-web_server-sg
+# Allow mysql in from web_server-sg
 resource "aws_security_group_rule" "rds_servers-mysql-in" {
   type                     = "ingress"
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
-  source_security_group_id = aws_security_group.public-web_server.id #allow from this sg
+  source_security_group_id = aws_security_group.web_server.id #allow from this sg
   security_group_id        = aws_security_group.rds_servers.id # attach to this sg
 }
 
-# Allow all out from rds_servers to public-web_server-sg
+# Allow all out from rds_servers to web_server-sg
 resource "aws_security_group_rule" "rds_servers-all-out" {
   type                     = "egress"
   from_port                = -1
   to_port                  = -1
   protocol                 = "-1"
-  source_security_group_id = aws_security_group.public-web_server.id #allow out to this sg
+  source_security_group_id = aws_security_group.web_server.id #allow out to this sg
   security_group_id        = aws_security_group.rds_servers.id # attach to this sg
 }
