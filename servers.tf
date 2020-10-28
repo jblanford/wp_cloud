@@ -3,7 +3,7 @@ module "ec2_cluster" {
   version = "~> 2.0"
 
   name           = "${var.project_name}-${var.environment}"
-  instance_count = 3
+  instance_count = 0
 
   ami                    = "${var.web_server_ami}"
   instance_type          = "${var.web_server_instance_type}"
