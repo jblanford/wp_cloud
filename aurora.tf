@@ -6,7 +6,7 @@ resource "aws_rds_cluster" "aurora" {
   engine_mode             = "serverless"
 
   backup_retention_period = 7
-  skip_final_snapshot     = false
+  skip_final_snapshot     = true
 
   master_username = var.db_user
   master_password = var.db_pass
