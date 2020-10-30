@@ -10,8 +10,12 @@ db_pass       = "<put pass here>"
 db_main_id    = "wpc-dev-main"
 db_replica_id = "wpc-dev-replica"
 
-rds_main_enabled    = false
-rds_replica_enabled = false
+rds_main_enabled          = false
+rds_replica_enabled       = false
 
-# route53 hosted domain name
-dns_zone = "example.com"
+aurora_serverless_enabled = true
+aurora_serverless_min     = 1
+aurora_serverless_max     = 2
+aurora_serverless_timeout = 300
+
+dns_zone = "johnblanford.guru"

@@ -64,6 +64,24 @@ variable "aurora_serverless_enabled" {
   default     = false
 }
 
+variable "aurora_serverless_min" {
+  description = "Minimum compute capacity"
+  type        = number
+  default     = 1
+}
+
+variable "aurora_serverless_max" {
+  description = "Maximum compute capacity"
+  type        = number
+  default     = 4
+}
+
+variable "aurora_serverless_timeout" {
+  description = "Seconds unti auto pause"
+  type        = number
+  default     = 300
+}
+
 variable "dns_zone" {
   description = "Route53 hosted dns zone for project"
   type        = string

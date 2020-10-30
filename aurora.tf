@@ -16,9 +16,9 @@ resource "aws_rds_cluster" "aurora" {
 
   scaling_configuration {
     auto_pause               = true
-    max_capacity             = 4
-    min_capacity             = 2
-    seconds_until_auto_pause = 300
+    max_capacity             = var.aurora_serverless_max
+    min_capacity             = var.aurora_serverless_min
+    seconds_until_auto_pause = var.aurora_serverless_timeout
     timeout_action           = "ForceApplyCapacityChange"
   }
 
