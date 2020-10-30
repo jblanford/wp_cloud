@@ -10,6 +10,32 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "vpc_cidr" {
+  description = "CIDR block for vpc"
+  type        = string
+  default     = "10.5.0.0/16"
+}
+
+variable "vpc_azs" {
+  description = "List of az names for vpc"
+  type        = list
+}
+
+variable "vpc_public_subnets" {
+  description = "List of subnet cidr blocks for public subnets"
+  type        = list
+}
+
+variable "vpc_private_subnets" {
+  description = "List of subnet cidr blocks for private subnets"
+  type        = list
+}
+
+variable "vpc_database_subnets" {
+  description = "List of subnet cidr blocks for data subnets"
+  type        = list
+}
+
 variable "public_servers_count" {
   description = "Number of public servers"
   type        = number

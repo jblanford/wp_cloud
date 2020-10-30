@@ -1,6 +1,11 @@
 project_name = "wp-cloud"
 environment  = "dev"
 
+vpc_azs              = ["us-east-2a", "us-east-2b", "us-east-2c"]
+vpc_public_subnets   = ["10.5.1.0/24", "10.5.2.0/24", "10.5.3.0/24"]
+vpc_private_subnets  = ["10.5.101.0/24", "10.5.102.0/24", "10.5.103.0/24"]
+vpc_database_subnets = ["10.5.201.0/24", "10.5.202.0/24", "10.5.203.0/24"]
+
 web_server_ami           = "ami-03657b56516ab7912"
 web_server_instance_type = "t3.micro"
 web_server_key_name      = "jb-ohio"

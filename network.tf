@@ -5,12 +5,12 @@ module "vpc" {
 
   name = "${var.project_name}-${var.environment}"
 
-  cidr = "10.5.0.0/16"
+  cidr = var.vpc_cidr
 
-  azs              = ["us-east-2a", "us-east-2b", "us-east-2c"]
-  public_subnets   = ["10.5.1.0/24", "10.5.2.0/24", "10.5.3.0/24"]
-  private_subnets  = ["10.5.101.0/24", "10.5.102.0/24", "10.5.103.0/24"]
-  database_subnets = ["10.5.201.0/24", "10.5.202.0/24", "10.5.203.0/24"]
+  azs              = var.vpc_azs
+  public_subnets   = var.vpc_public_subnets
+  private_subnets  = var.vpc_private_subnets
+  database_subnets = var.vpc_database_subnets
 
   enable_ipv6 = false
 
