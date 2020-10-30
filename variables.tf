@@ -58,6 +58,12 @@ variable "rds_replica_enabled" {
   default     = false
 }
 
+variable "aurora_serverless_enabled" {
+  description = "Create aurora serverless db"
+  type        = bool
+  default     = false
+}
+
 variable "dns_zone" {
   description = "Route53 hosted dns zone for project"
   type        = string

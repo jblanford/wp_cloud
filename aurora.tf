@@ -1,7 +1,10 @@
 resource "aws_rds_cluster" "aurora" {
+
+  count = var.aurora_serverless_enabled ? 1 : 0
+
   cluster_identifier      = "${var.project_name}-${var.environment}-aurora"
   vpc_security_group_ids  = [aws_security_group.rds_servers.id]
-  db_subnet_group_name    = aws_db_subnet_group.aurora.name
+  db_subnet_group_name    = aws_db_subnet_group.aurora[0].name
 
   engine_mode             = "serverless"
 
@@ -27,6 +30,9 @@ resource "aws_rds_cluster" "aurora" {
 }
 
 resource "aws_db_subnet_group" "aurora" {
+
+  count = var.aurora_serverless_enabled ? 1 : 0
+
   name        = "${var.project_name}-${var.environment}-aurora-subnet"
   description = "Subnet group for aurora serverless"
   subnet_ids  = module.vpc.database_subnets
@@ -40,5 +46,6 @@ resource "aws_db_subnet_group" "aurora" {
 
 output "this_rds_cluster_endpoint" {
   description = "The cluster endpoint"
-  value       = aws_rds_cluster.aurora.endpoint
+  #value       = aws_rds_cluster.aurora.endpoint
+  value       = var.aurora_serverless_enabled ? aws_rds_cluster.aurora[0].endpoint : "aurora not enabled"
 }
