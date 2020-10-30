@@ -6,6 +6,10 @@ web_server_instance_type = "t3.micro"
 web_server_key_name      = "jb-ohio"
 public_servers_count     = 0
 
+asg_desired_capacity = 3
+asg_min_size         = 1
+asg_max_size         = 9
+
 db_user       = "admin"
 db_pass       = "<put pass here>"
 db_main_id    = "wpc-dev-main"

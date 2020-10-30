@@ -32,6 +32,24 @@ variable "web_server_key_name" {
   type        = string
 }
 
+variable "asg_desired_capacity" {
+  description = "Desired number of servers in the asg"
+  type        = number
+  default     = 3
+}
+
+variable "asg_min_size" {
+  description = "Minimum number of servers in the asg"
+  type        = number
+  default     = 1
+}
+
+variable "asg_max_size" {
+  description = "Maximum number of servers in the asg"
+  type        = number
+  default     = 9
+}
+
 variable "db_main_id" {
   description = "RDS main db identifier"
   type        = string

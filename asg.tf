@@ -27,9 +27,9 @@ resource "aws_autoscaling_group" "web_asg" {
   launch_configuration = aws_launch_configuration.web_lc.name
   vpc_zone_identifier  = module.vpc.private_subnets
 
-  desired_capacity  = 3
-  min_size          = 1
-  max_size          = 9
+  desired_capacity  = var.asg_desired_capacity
+  min_size          = var.asg_min_size
+  max_size          = var.asg_max_size
   health_check_type = "ELB"
 
   # Attach these servers to the web-80-tg target group on the web-alb
