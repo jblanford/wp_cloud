@@ -4,6 +4,7 @@ environment  = "dev"
 web_server_ami           = "ami-03657b56516ab7912"
 web_server_instance_type = "t3.micro"
 web_server_key_name      = "jb-ohio"
+public_servers_count     = 0
 
 db_user       = "admin"
 db_pass       = "<put pass here>"
@@ -13,7 +14,7 @@ db_replica_id = "wpc-dev-replica"
 rds_main_enabled          = false
 rds_replica_enabled       = false
 
-aurora_serverless_enabled = true
+aurora_serverless_enabled = false
 aurora_serverless_min     = 1
 aurora_serverless_max     = 2
 aurora_serverless_timeout = 300

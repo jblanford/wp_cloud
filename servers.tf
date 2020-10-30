@@ -3,7 +3,7 @@ module "ec2_cluster" {
   version = "~> 2.0"
 
   name           = "${var.project_name}-${var.environment}"
-  instance_count = 0
+  instance_count = var.public_servers_count
 
   ami                    = "${var.web_server_ami}"
   instance_type          = "${var.web_server_instance_type}"
@@ -11,7 +11,7 @@ module "ec2_cluster" {
   iam_instance_profile   = aws_iam_instance_profile.ssm_profile.name
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.web_server.id]
-  subnet_ids             = module.vpc.private_subnets
+  subnet_ids             = module.vpc.public_subnets
 
   tags = {
     Project     = "${var.project_name}"
@@ -20,10 +20,10 @@ module "ec2_cluster" {
   }
 }
 
-# sg for public web servers
+# sg for web servers
 resource "aws_security_group" "web_server" {
   name        = "${var.project_name}-web_server-sg"
-  description = "Security group for public web servers"
+  description = "Security group for web servers"
   vpc_id      = module.vpc.vpc_id
 
   tags = {

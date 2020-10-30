@@ -10,6 +10,12 @@ variable "environment" {
   default     = "dev"
 }
 
+variable "public_servers_count" {
+  description = "Number of public servers"
+  type        = number
+  default     = 3
+}
+
 variable "web_server_ami" {
   description = "Ami to use for the web servers"
   type        = string
