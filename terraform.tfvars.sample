@@ -1,6 +1,10 @@
+aws_region = "us-east-2"
+aws_profile = "terraform"
+
 project_name = "wp-cloud"
 environment  = "dev"
 
+vpc_cidr             = "10.5.0.0/16"
 vpc_azs              = ["us-east-2a", "us-east-2b", "us-east-2c"]
 vpc_public_subnets   = ["10.5.1.0/24", "10.5.2.0/24", "10.5.3.0/24"]
 vpc_private_subnets  = ["10.5.101.0/24", "10.5.102.0/24", "10.5.103.0/24"]
