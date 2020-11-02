@@ -3,4 +3,4 @@ This repository contains Terraform code to create a version of this reference ar
 
 https://raw.githubusercontent.com/aws-samples/aws-refarch-wordpress/master/images/aws-refarch-wordpress-v20171026.jpeg
 
-This is example code form a talk at the Bellingham Linux Users Group (https://www.blug.org/) meeting in November 2020.
+This is example code from a talk at the Bellingham Linux Users Group (https://www.blug.org/) meeting in November 2020.
