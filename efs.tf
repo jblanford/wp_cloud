@@ -15,6 +15,11 @@ resource "aws_efs_file_system" "efs-exports" {
   }
 }
 
+output "fsid" {
+  value       = aws_efs_file_system.efs-exports.id
+  description = "EFS file system id"
+}
+
 # efs mount points (one per data subnet)
 resource "aws_efs_mount_target" "efs-mnt-exports" {
   count = length(module.vpc.database_subnets)
