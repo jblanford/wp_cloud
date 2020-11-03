@@ -1,4 +1,4 @@
-# Looup the route53 zone id for our domain
+# Lookup the route53 zone id for our domain
 data "aws_route53_zone" "selected" {
   name = var.dns_zone
 }
